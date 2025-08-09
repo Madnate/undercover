@@ -1,6 +1,6 @@
 import React from 'react';
 import { Trophy, RotateCcw, Users } from 'lucide-react';
-import { GameState } from '../types/game';
+import { type GameState } from '../types/game';
 
 interface GameOverProps {
   gameState: GameState;
