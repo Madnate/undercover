@@ -1,6 +1,6 @@
 import React from 'react';
 import { Vote, Users, AlertTriangle } from 'lucide-react';
-import { GameState } from '../types/game';
+import { type GameState } from '../types/game';
 
 interface VotingPhaseProps {
   gameState: GameState;

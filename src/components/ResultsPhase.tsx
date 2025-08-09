@@ -1,6 +1,6 @@
 import React from 'react';
 import { CheckCircle, XCircle, ArrowRight, RotateCcw } from 'lucide-react';
-import { GameState } from '../types/game';
+import { type  GameState } from '../types/game';
 
 interface ResultsPhaseProps {
   gameState: GameState;

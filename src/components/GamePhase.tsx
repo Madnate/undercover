@@ -1,6 +1,6 @@
 import React from 'react';
 import { Eye, EyeOff, ArrowRight, Clock } from 'lucide-react';
-import { GameState } from '../types/game';
+import { type  GameState } from '../types/game';
 
 interface GamePhaseProps {
   gameState: GameState;

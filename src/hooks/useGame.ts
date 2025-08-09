@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import { GameState, Player, WordPair } from '../types/game';
+import { type GameState, type Player, type WordPair } from '../types/game';
 import { wordPairs } from '../data/wordPairs';
 
 const initialGameState: GameState = {

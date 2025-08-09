@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Plus, Trash2, Users, Play } from 'lucide-react';
-import { Player } from '../types/game';
+import { type  Player } from '../types/game';
 
 interface PlayerSetupProps {
   players: Player[];

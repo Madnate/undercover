@@ -1,4 +1,4 @@
-import { WordPair } from '../types/game';
+import { type WordPair } from '../types/game';
 
 export const wordPairs: WordPair[] = [
   { civilian: 'Coffee', undercover: 'Tea', category: 'Beverages' },
