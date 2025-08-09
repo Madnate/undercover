@@ -1,35 +1,84 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react';
+import { useGame } from './hooks/useGame';
+import { PlayerSetup } from './components/PlayerSetup';
+import { GamePhase } from './components/GamePhase';
+import { VotingPhase } from './components/VotingPhase';
+import { ResultsPhase } from './components/ResultsPhase';
+import { GameOver } from './components/GameOver';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const {
+    gameState,
+    addPlayer,
+    removePlayer,
+    startGame,
+    nextPlayer,
+    votePlayer,
+    eliminatePlayer,
+    nextRound,
+    resetGame,
+  } = useGame();
+
+  const [showWord, setShowWord] = useState(false);
+
+  const handleNextPlayer = () => {
+    setShowWord(false);
+    nextPlayer();
+  };
+
+  const renderCurrentPhase = () => {
+    switch (gameState.currentPhase) {
+      case 'setup':
+        return (
+          <PlayerSetup
+            players={gameState.players}
+            onAddPlayer={addPlayer}
+            onRemovePlayer={removePlayer}
+            onStartGame={startGame}
+          />
+        );
+      case 'description':
+        return (
+          <GamePhase
+            gameState={gameState}
+            onNextPlayer={handleNextPlayer}
+            showWord={showWord}
+            onToggleWord={() => setShowWord(!showWord)}
+          />
+        );
+      case 'voting':
+        return (
+          <VotingPhase
+            gameState={gameState}
+            onVotePlayer={votePlayer}
+            onEliminatePlayer={eliminatePlayer}
+          />
+        );
+      case 'results':
+        return (
+          <ResultsPhase
+            gameState={gameState}
+            onNextRound={nextRound}
+            onResetGame={resetGame}
+          />
+        );
+      case 'gameOver':
+        return (
+          <GameOver
+            gameState={gameState}
+            onResetGame={resetGame}
+          />
+        );
+      default:
+        return null;
+    }
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="min-h-screen bg-gradient-to-br from-purple-100 via-pink-50 to-blue-100">
+      {renderCurrentPhase()}
+    </div>
+  );
 }
 
-export default App
+export default App;
