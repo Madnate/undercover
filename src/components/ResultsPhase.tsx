@@ -73,9 +73,7 @@ export const ResultsPhase: React.FC<ResultsPhaseProps> = ({
                 }`}
               >
                 <div className="flex items-center gap-2">
-                  <div className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-semibold ${
-                    player.isUndercover ? 'bg-red-500 text-white' : 'bg-blue-500 text-white'
-                  }`}>
+                  <div className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-semibold bg-blue-500 text-white`}>
                     {player.name.charAt(0).toUpperCase()}
                   </div>
                   <span className="font-medium text-gray-800">{player.name}</span>

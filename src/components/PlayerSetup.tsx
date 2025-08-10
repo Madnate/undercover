@@ -38,7 +38,7 @@ export const PlayerSetup: React.FC<PlayerSetupProps> = ({
       <div className="bg-white rounded-xl shadow-lg p-6 mb-6">
         <h2 className="text-xl font-semibold text-gray-800 mb-4">Add Players</h2>
         
-        <form onSubmit={handleAddPlayer} className="flex gap-3 mb-6">
+        <form onSubmit={handleAddPlayer} className="flex flex-wrap gap-3 mb-6">
           <input
             type="text"
             value={newPlayerName}
@@ -50,7 +50,7 @@ export const PlayerSetup: React.FC<PlayerSetupProps> = ({
           <button
             type="submit"
             disabled={!newPlayerName.trim() || players.length >= 8}
-            className="px-6 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors flex items-center gap-2"
+            className="flex-1 sm:flex-none justify-center px-6 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors flex items-center gap-2"
           >
             <Plus className="w-4 h-4" />
             Add
